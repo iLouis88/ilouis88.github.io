@@ -1,8 +1,8 @@
 ---
 title: Expense Manager
 ---
-## COMP1786-M-EXPENS.gihub.io
-## Welome
+
+## Welcome
 
 ## Have a nice day
 

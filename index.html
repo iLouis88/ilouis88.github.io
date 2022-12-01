@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta
+      name="viewport"
+      content="initial-scale=1, width=device-width, viewport-fit=cover"
+    />
+    <meta name="color-scheme" content="light dark" />
+
+    <link rel="stylesheet" type="text/css" href="bower_components/jquery.gifplayer/dist/gifplayer.css">
+
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"
+    />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/pf_style.css" />
+
+    <title>Expense Manager App</title>
+  </head>
+
+  <body>
+    <!-- https://www.flaticon.com/ -->
+
+ <!-- PAGE list "MENU" AND HOME -->
+    <div class="bg_home" data-role="page" id="page-home" >
+       <div data-role="panel" data-display="push" id="panel">  <!--data-role="panel" Create Navbar menu || Create Menu --> 
+        <div style="text-align: center; margin-bottom: 50px">
+          <h1>M-Expense</h1>
+          <img src="img/logo_menu.png" alt="Logo" width="75%" />
+        </div>
+
+        <ul data-role="listview">
+          <li data-icon="false">
+            <a href="#page-home" data-transition="none" class="active">Home</a>
+          </li>
+
+          <li data-icon="false">
+            <a href="#page-create" data-transition="none">New Trip</a>
+          </li>
+
+          <li data-icon="false">
+            <a href="#page-list" data-transition="none">Trip List</a>
+          </li>
+
+          <li data-icon="false">
+            <a href="#page-about" data-transition="none">About</a>
+          </li>
+        
+        </ul>
+
+        <br /><br /><br />    
+        <p><strong>Edited by:</strong> NVT</p>
+      
+      </div>
+
+<!-- NavBar Header Page HOME-->
+      <div
+        data-role="header"
+        data-position="fixed"
+        data-tap-toggle="false"
+        data-hide-during-focus=""       
+      >        
+        <div style="margin-left: 5px; margin-right: 5px">
+            <a 
+            style="border: none; background-color: transparent"
+            id="panel-open"
+            class="ui-btn ui-icon-bars ui-btn-icon-notext ui-nodisc-icon"
+            >Open Panel</a
+          >
+           <h1 style="margin-top: 10px;" id="title">Home</h1> 
+         
+        </div>
+      </div>
+    
+<!--(Content >> body) List feature Page HOME -->
+      <div data-role="main" " style="text-align: center">  
+        
+      <img class="gif" width="100%" height="330" alt="Home page gif" src="img/gif_img/gif_image_home.gif">
+      
+        
+
+        <div class="shortcut">
+          <div class="shortcut-item">
+            <a
+              id="btn-reset"
+              class="ui-btn ui-alt-icon ui-icon-recycle ui-nodisc-icon ui-btn-icon-top"
+            >
+              Reset
+            </a>
+          </div>
+
+          <div class="shortcut-item">
+            <a
+              id="btn-backup"
+              class="ui-btn ui-alt-icon ui-icon-action ui-nodisc-icon ui-btn-icon-top"
+            >
+              Backup
+            </a>
+        
+
+          </div>
+        </div>
+      </div>
+
+      <div
+        data-role="footer"
+        data-position="fixed"
+        data-tap-toggle="false"
+        data-hide-during-focus=""
+      >
+
+<!-- NavBar Bottom HOME -->
+
+        <div data-role="navbar">
+          <ul>
+            <li> 
+              <a
+                href="#page-home"
+                data-transition="none"
+                class="ui-btn ui-btn-b ui-icon-home ui-btn-icon-notext ui-nodisc-icon ui-state-persist active"
+                >Home </a
+              >
+            </li>
+
+            <li>
+              <a
+                href="#page-create"
+                data-transition="none"
+                class="ui-btn ui-btn-b ui-icon-edit ui-btn-icon-notext ui-nodisc-icon"
+                >New</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="#page-list"
+                data-transition="none"
+                class="ui-btn ui-btn-b ui-icon-bullets ui-btn-icon-notext ui-nodisc-icon"
+                >List</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="#page-about"
+                data-transition="none"
+                class="ui-btn ui-btn-b ui-icon-user ui-btn-icon-notext ui-nodisc-icon"
+                >About</a
+              >
+            </li>
+
+           
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE "CREATE NEW ACCOUNT" -->
+    <div data-role="page" id="page-create">
+     
+
+      <div
+        data-role="header"
+        data-position="fixed"
+        data-tap-toggle="false"
+        data-hide-during-focus=""
+      > 
+      <button id="back_btn" type="button" onclick="back()">Back</button>
+      <script>
+          function back(){
+              history.back();
+          }
+      </script>
+       
+      </div>
+
+<!-- Add new trip -->
+      <div data-role="main" class="ui-content">
+        <!-- Registration Form -->
+        <form id="frm-register">
+          <label class="small-text">Trip Name</label>
+          <input
+            type="text"
+            id="name"
+            data-clear-btn="true"
+            placeholder="Enter trip name here..."
+            required
+          />
+
+          <fieldset class="ui-grid-a" style="overflow: visible">
+            <div class="ui-block-a" style="padding-right: 5px">
+              <label class="small-text">Destination</label>
+              <input
+                type="text"
+                placeholder="Enter destination here..."
+                id="destination"
+                data-clear-btn="true"
+                required
+              />
+            </div>
+
+            <div class="ui-block-b" style="padding-left: 5px">
+              <label class="small-text">Date</label>
+              <input type="date" id="date" required />
+            </div>
+          </fieldset>
+
+      
+          <label class="small-text">Description</label>
+          <input
+            type="text"
+            placeholder="Enter description here..."
+            id="description"
+            data-clear-btn="true"
+          />
+
+          <label class="small-text">Member's name</label>
+          <input
+            type="text"
+            placeholder="Unfinished function"
+            disabled
+            
+          />
+
+         
+
+          <label class="small-text">Required Risk Assessment</label>
+          <select id="risk" data-role="slider" data-mini="true">
+            <option value="No" selected>No</option>
+            <option value="Yes">Yes</option>
+          </select>
+
+          <button type="submit" class="green">Create Trip</button>
+        </form>
+
+        <!-- Confirm Registration -->
+        <form
+          data-role="popup"
+          id="frm-confirm"
+          class="ui-content"
+          data-overlay-theme="b"
+        >
+          <table style="text-align: left">
+            <tr>
+              <th>Name</th>
+              <td id="name"></td>
+            </tr>
+
+            <tr>
+              <th>Destination</th>
+              <td id="destination"></td>
+            </tr>
+
+            <tr>
+              <th>Date</th>
+              <td id="date"></td>
+            </tr>
+
+            <tr>
+              <th>Description</th>
+              <td id="description"></td>
+            </tr>
+
+            <tr>
+              <th>Risk Assessment</th>
+              <td id="risk"></td>
+            </tr>
+
+            <tr>
+              <th>Member's name</th>
+              <td>unfinished function</td>
+            </tr>
+
+          </table>
+
+          <div class="ui-grid-a">
+            <div class="ui-block-a" style="padding: 5px">
+              <button type="button" id="edit">Edit</button>
+            </div>
+
+            <div class="ui-block-b" style="padding: 5px">
+              <button type="submit" class="green">Confirm</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div
+        data-role="footer"
+        data-position="fixed"
+        data-tap-toggle="false"
+        data-hide-during-focus=""
+      >
+        <div data-role="navbar">
+          <ul>
+            <li>
+              <a
+                href="#page-home"
+                data-transition="none"
+                class="ui-btn ui-btn-b ui-icon-home ui-btn-icon-notext ui-nodisc-icon"
+                >Home</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="#page-create"
+                data-transition="none"
+                class="ui-btn ui-btn-b ui-icon-edit ui-btn-icon-notext ui-nodisc-icon ui-state-persist active"
+                >New</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="#page-list"
+                data-transition="none"
+                class="ui-btn ui-btn-b ui-icon-bullets ui-btn-icon-notext ui-nodisc-icon"
+                >List</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="#page-about"
+                data-transition="none"
+                class="ui-btn ui-btn-b ui-icon-user ui-btn-icon-notext ui-nodisc-icon"
+                >About</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE "TRIP LIST" -->
+    <div data-role="page" id="page-list">
+   
+
+      <div
+        data-role="header"
+        data-position="fixed"
+        data-tap-toggle="false"
+        data-hide-during-focus=""
+      >  <button id="back_btn" type="button" onclick="back()">Back</button>
+      <script>
+          function back(){
+              history.back();
+          }
+      </script>
+        
+      </div>
+
+      <div data-role="main">
+        <table>
+          <tr>
+            <td style="width: 100%; padding: 0px">
+              <input type="text" placeholder="Filter trip..." id="txt-filter" />
+            </td>
+
+            <td style="padding: 0px">
+              <button id="btn-filter-popup"></button>
+            </td>
+
+            <td style="padding: 0px">
+              <button
+                class="ui-btn ui-icon-refresh ui-btn-icon-notext ui-nodisc-icon"
+                id="btn-reset"
+              ></button>
+            </td>
+          </tr>
+        </table>
+
+        <form
+          data-role="popup"
+          id="frm-search"
+          class="ui-content"
+          style="width: 80vw"
+          data-overlay-theme="b"
+        >
+          <label class="small-text">Trip Name</label>
+          <input
+            type="text"
+            id="name"
+            data-clear-btn="true"
+            placeholder="Enter trip name here..."
+          />
+
+          <label class="small-text">Destination</label>
+          <input
+            type="text"
+            placeholder="Enter destination here..."
+            id="destination"
+            data-clear-btn="true"
+          />
+
+          <label class="small-text">Date</label>
+          <input type="date" id="date" />
+
+          <button type="submit" class="green">Search</button>
+        </form>
+
+        <ul
+          id="list-trip"
+          data-role="listview"
+          class="ui-nodisc-icon ui-alt-icon"
+        ></ul>
+      </div>
+
+      <div
+        data-role="footer"
+        data-position="fixed"
+        data-tap-toggle="false"
+        data-hide-during-focus=""
+      >
+        <div data-role="navbar">
+          <ul>
+            <li>
+              <a
+                href="#page-home"
+                data-transition="none"
+                class="ui-btn ui-btn-b ui-icon-home ui-btn-icon-notext ui-nodisc-icon"
+                >Home</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="#page-create"
+                data-transition="none"
+                class="ui-btn ui-btn-b ui-icon-edit ui-btn-icon-notext ui-nodisc-icon"
+                >New</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="#page-list"
+                data-transition="none"
+                class="ui-btn ui-btn-b ui-icon-bullets ui-btn-icon-notext ui-nodisc-icon ui-state-persist active"
+                >List</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="#page-about"
+                data-transition="none"
+                class="ui-btn ui-btn-b ui-icon-user ui-btn-icon-notext ui-nodisc-icon"
+                >About</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE "TRIP DETAILS" -->
+    <div data-role="page" id="page-detail">
+      <div
+        data-role="header"
+        data-position="fixed"
+        data-tap-toggle="false"
+        data-hide-during-focus=""
+      > 
+      
+        <div style="margin-left: 5px; margin-right: 5px">
+          <a
+            href="#page-list"
+            data-transition="none"
+            class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-nodisc-icon transparent"
+            >Back to list</a
+          >
+
+          <a
+            href="#option"
+            data-rel="popup"
+            style="float: right"
+            data-transition="none"
+            class="ui-btn ui-btn-icon-notext ui-nodisc-icon btn-option"
+            >Option</a
+          >
+        </div>
+      </div>
+
+      <div data-role="main" class="ui-content">
+        <div data-role="popup" id="option">
+          <ul data-role="listview" data-icon="false">
+            <li>
+              <a
+                href="#frm-update"
+                data-rel="popup"
+                data-position-to="window"
+                id="btn-update-popup"
+              >
+                Update
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="#frm-delete"
+                data-rel="popup"
+                data-position-to="window"
+                id="btn-delete-popup"
+              >
+                Delete
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <form data-role="popup" id="frm-delete" data-overlay-theme="b">
+          <div data-role="header">  <button id="back_btn" type="button" onclick="back()">Back</button>
+            <script>
+                function back(){
+                    history.back();
+                }
+            </script>
+            <h1 style="padding-top: 20px">Delete Trip?</h1>
+          </div>
+
+          <div role="main" class="ui-content">
+            <h3>Are you sure you want to delete this trip?</h3>
+            <p>This action cannot be undone.</p>
+            <br />
+
+            <p>
+              <em
+                >Please type "<strong>confirm delete</strong>" to delete this
+                trip.</em
+              >
+            </p>
+            <input type="text" id="txt-confirm" />
+
+            <div style="text-align: right">
+              <a class="ui-btn ui-corner-all ui-btn-inline" data-rel="back"
+                >Cancel</a
+              >
+
+              <button
+                type="submit"
+                class="ui-btn ui-corner-all ui-btn-inline ui-disabled green"
+                id="btn-delete"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <form
+          id="frm-update"
+          data-role="popup"
+          class="ui-content"
+          data-overlay-theme="b"
+        >
+          <label class="small-text">Trip Name</label>
+          <input
+            type="text"
+            id="name"
+            data-clear-btn="true"
+            placeholder="Enter trip name here..."
+            required
+          />
+
+          <fieldset class="ui-grid-a" style="overflow: visible">
+            <div class="ui-block-a" style="padding-right: 5px">
+              <label class="small-text">Destination</label>
+              <input
+                type="text"
+                placeholder="Enter destination here..."
+                id="destination"
+                data-clear-btn="true"
+                required
+              />
+            </div>
+
+            <div class="ui-block-b" style="padding-left: 5px">
+              <label class="small-text">Date</label>
+              <input type="date" id="date" required />
+            </div>
+          </fieldset>
+
+          <label class="small-text">Description</label>
+          <input
+            type="text"
+            placeholder="Enter description here..."
+            id="description"
+            data-clear-btn="true"
+          />
+
+          <label class="small-text">Required Risk Assessment</label>
+          <select id="risk" data-role="slider" data-mini="true">
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+          </select>
+
+          <div class="ui-grid-a">
+            <div class="ui-block-a" style="padding: 5px">
+              <button type="button" id="cancel">Cancel</button>
+            </div>
+
+            <div class="ui-block-b" style="padding: 5px">
+              <button type="submit" class="green">Update</button>
+            </div>
+          </div>
+        </form>
+
+        <div id="detail">
+          <h1 id="name"></h1>
+
+          <table style="text-align: left">
+            <tr>
+              <th><img src="img/icon-destination.png" height="20px" /></th>
+              <td id="destination"></td>
+            </tr>
+
+            <tr>
+              <th><img src="img/icon-date.png" height="20px" /></th>
+              <td id="date"></td>
+            </tr>
+            <tr>
+              <th><img src="img/icon-description.png" height="20px" /></th>
+              <td id="description"></td>
+            </tr>
+
+            <tr>
+              <th><img src="img/icon-risk.png" height="20px" /></th>
+              <td id="risk"></td>
+            </tr>
+
+          </table>
+        </div>
+
+        <table style="margin-top: 20px; text-align: left; margin-bottom: 5px">
+          <tr style="width: 100%">
+            <td>
+              <button
+                style="font-size: 10px"
+                id="btn-toggle-expense"
+                class="ui-btn ui-alt-icon ui-icon-edit ui-corner-all ui-btn-icon-notext ui-nodisc-icon ui-btn-inline ui-mini transparent"
+              >
+                Toggle Expense
+              </button>
+            </td>
+
+            <th style="font-size: 15px; width: 100%">Show Expenses</th>
+
+            <td>
+              <a
+                href="#frm-add-expense"
+                data-rel="popup"
+                data-position-to="window"
+                id="btn-add-expense-popup"
+                class="ui-btn ui-mini green ui-corner-all"
+              >
+                Add
+              </a>
+            </td>
+          </tr>
+        </table>
+
+        <div id="expense" style="display: none">
+          <div id="list"></div>
+        </div>
+      </div>
+
+      <form
+        id="frm-add-expense"
+        data-role="popup"
+        class="ui-content"
+        data-overlay-theme="b"
+      >
+        <fieldset class="ui-grid-a" style="overflow: visible">
+          <div class="ui-block-a" style="padding-right: 5px">
+            <label class="small-text">Amount</label>
+            <input
+              type="number"
+              id="amount"
+              data-clear-btn="true"
+              placeholder="Enter amount here..."
+              required
+            />
+          </div>
+
+          <div class="ui-block-b" style="padding-left: 5px">
+            <label class="small-text">Expense Type</label>
+            <select id="type" data-mini="true" required>
+              <option value="Travel">Travel</option>
+              <option value="Food">Food</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <fieldset class="ui-grid-a" style="overflow: visible">
+          <div class="ui-block-a" style="padding-right: 5px">
+            <label class="small-text">Date</label>
+            <input type="date" id="date" required />
+          </div>
+
+          <div class="ui-block-b" style="padding-left: 5px">
+            <label class="small-text">Time</label>
+            <input type="time" id="time" required />
+          </div>
+        </fieldset>
+
+        <label class="small-text">Comment</label>
+        <input
+          type="text"
+          placeholder="Enter comment here..."
+          id="comment"
+          data-clear-btn="true"
+        />
+
+        <div class="ui-grid-a">
+          <div class="ui-block-a" style="padding: 5px">
+            <button type="button" id="cancel">Cancel</button>
+          </div>
+
+          <div class="ui-block-b" style="padding: 5px">
+            <button type="submit" class="green">Add</button>
+          </div>
+        </div>
+      </form>
+
+      <div
+        data-role="footer"
+        data-position="fixed"
+        data-tap-toggle="false"
+        data-hide-during-focus=""
+      >
+        <div data-role="navbar">
+          <ul>
+            <li>
+              <a
+                href="#page-home"
+                data-transition="none"
+                class="ui-btn ui-btn-b ui-icon-home ui-btn-icon-notext ui-nodisc-icon"
+                >Home</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="#page-create"
+                data-transition="none"
+                class="ui-btn ui-btn-b ui-icon-edit ui-btn-icon-notext ui-nodisc-icon"
+                >New</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="#page-list"
+                data-transition="none"
+                class="ui-btn ui-btn-b ui-icon-bullets ui-btn-icon-notext ui-nodisc-icon ui-state-persist active"
+                >List</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="#page-about"
+                data-transition="none"
+                class="ui-btn ui-btn-b ui-icon-user ui-btn-icon-notext ui-nodisc-icon"
+                >About</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+<!-- PAGE "ABOUT" -->
+    <div data-role="page" id="page-about">
+      
+
+      <div
+        data-role="header"
+        data-position="fixed"
+        data-tap-toggle="false"
+        data-hide-during-focus=""
+      >
+      <button  class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-nodisc-icon transparent" type="button" onclick="back()">Back</button>
+      <script>
+          function back(){
+              history.back();
+          }
+      </script>
+        
+      </div>
+
+      <div data-role="main" class="ui-content" style="text-align: center">
+ 
+        <div class="profile">
+          <div class="photo"> <a href="#page-home" data-transition="none">
+            <img src="img/avt.png" /> </a>
+          </div>
+        
+          <div class="content"> <a href="#page-home" data-transition="none">
+           
+            <div class="text"> 
+              <h3>M-Expense</h3>
+              <h6>Trip expense management app.</h6> 
+            </div>  </a></div>
+
+            <!-- <div class="btn">
+              <span></span>
+            </div>
+          </div>
+          <div class="box">
+            <span><i class="fab fa-instagram"></i></span>
+            <span><i class="fab fa-facebook"></i></span>
+            <span><i class="fab fa-reddit"></i></span>
+            <span><i class="fab fa-twitter"></i></span>
+            <span><i class="fab fa-tumblr"></i></span>
+        
+          </div> -->
+        </div>
+     
+        <!-- <h1>EXPENSE Manager</h1> -->
+        <img
+          src="img/logo_about.png"
+          alt="Logo"
+          width="340px"
+          style="margin-bottom: 10px; margin-top: 70px;"
+        />
+
+        <h2>Contact</h2>
+        <p style="margin-bottom: 7px">
+          Hotline:
+          <strong
+            ><em><a href="tel:+84932458897">(84) 932458897 </a></em></strong
+          >
+        </p>
+
+        <p style="margin-bottom: 7px">
+          Email:
+          <strong>
+            <em>
+              <a href="mailto:Thanhnvgcs1802@fpt.edu.vn"
+                >ThanhNVGCS1802@fpt.edu.vn</a
+              ></em
+            ></strong
+          >
+        </p>
+
+        <p style="margin-bottom: 1px">
+          <em>Copyright &#169; 2022 ||</em> Edited by:
+          <strong><em>NVT</em></strong>
+        </p>
+      </div>
+
+
+
+
+ <!-- IDEA PAGE SETTING. MENU. Overview -->
+
+      
+   <script type="text/javascript" src="bower_components/jquery.gifplayer/dist/jquery.gifplayer.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
